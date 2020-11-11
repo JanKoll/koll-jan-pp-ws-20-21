@@ -22,4 +22,4 @@
 
 ### Projekt in Xcode ausführen
 
-Nach der Ionic Installation muss im Projektordner der Befehl `ionic capacitor open ios` ausgeführt werden und in Xcode die Passenden Zertifikate für den Appstore und den Benutzer hinterlegt werden um es auszurollen.
+Nach der Ionic Installation muss im Projektordner der Befehl `ionic capacitor copy ios` ausgeführt werden um das Projekt in Xcode zu Clonen. Dann kann es mit `ionic capacitor open ios` in Xcode geöffnet werden (alternativ in Xcode zu Verzeichnis navigieren).

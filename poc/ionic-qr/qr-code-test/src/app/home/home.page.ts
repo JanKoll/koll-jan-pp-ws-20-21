@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Platform } from '@ionic/angular';
@@ -10,82 +11,96 @@ import { Platform } from '@ionic/angular';
 export class HomePage {
   scanSub: any;
   qrText: string;
+  error: boolean = false;
 
   constructor(
     public platform: Platform,
-    private qrScanner: QRScanner
+    private qrScanner: QRScanner,
+    private route: Router,
   ) {
     this.platform.backButton.subscribeWithPriority(0, () => {
-      document.getElementsByTagName('body')[0].style.opacity = '1';
-      this.scanSub.unsubscribe();
+
+      // Android Physical Back Button???
+      // document.getElementsByTagName('body')[0].style.opacity = '1';
+      // Use Class to Toggle Backgound Visibility
+      this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+
+      this.qrScanner.destroy();
+
+
     });
   }
 
+  toPage(name) {
+    this.route.navigate(['/' + name]);
+  }
+
   startScanning() {
-    // Optionally request the permission early
+  // Optionally request the permission early
     this.qrScanner.prepare().
       then((status: QRScannerStatus) => {
         if (status.authorized) {
           this.qrScanner.show();
-          this.scanSub = document.getElementsByTagName('body')[0].style.opacity = '0';
-          debugger
+          // this.scanSub = document.getElementsByTagName('body')[0].style.opacity = '.5';
+          // Use Class to Toggle Backgound Visibility
+          this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+
+          // debugger
           this.scanSub = this.qrScanner.scan()
             .subscribe((textFound: string) => {
-              document.getElementsByTagName('body')[0].style.opacity = '1';
-              this.qrScanner.hide();
-              this.scanSub.unsubscribe();
+              // document.getElementsByTagName('body')[0].style.opacity = '1';
+              // Use Class to Toggle Backgound Visibility
+              this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
 
-              this.qrText = textFound;
+              // this.qrText = textFound;
+
+              // Route to Page with textFound var
+              var array = [];
+
+              this.route.config.forEach(elements => {
+                array.push(elements.path)
+              });
+
+              if (array.includes(textFound)) {
+                this.route.navigate(['/' + textFound]);
+                console.log(this.error);
+                this.qrScanner.destroy();
+              } else {
+                this.error = true
+                console.log(this.error);
+
+                this.qrScanner.destroy();
+
+                // Send errormessage
+              }
+
+
+
+
             }, (err) => {
               alert(JSON.stringify(err));
             });
 
         } else if (status.denied) {
-        } else {
+          // The video preview will remain black, and scanning is disabled. We can
+          // try to ask the user to change their mind, but we'll have to send them
+          // to their device settings with `QRScanner.openSettings()`.
 
+          confirm("Would you like to enable QR code scanning? You can allow camera access in your settings.");
+
+        } else {
+          // we didn't get permission, but we didn't get permanently denied. (On
+          // Android, a denial isn't permanent unless the user checks the "Don't
+          // ask again" box.) We can ask again at the next relevant opportunity.
         }
       })
       .catch((e: any) => console.log('Error is', e));
   }
 
+  stopScanning() {
+    // document.getElementsByTagName('body')[0].style.opacity = '1';
+    // Use Class to Toggle Backgound Visibility
+    this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+    this.qrScanner.destroy();
+  }
 }
-
-
-// import { Component } from '@angular/core';
-// import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-//
-// @Component({
-//   selector: 'app-home',
-//   templateUrl: 'home.page.html',
-//   styleUrls: ['home.page.scss'],
-// })
-// export class HomePage {
-//
-//   constructor(private qrScanner: QRScanner) { }
-//
-// }
-//
-// // Optionally request the permission early
-// this.qrScanner.prepare()
-//   .then((status: QRScannerStatus) => {
-//      if (status.authorized) {
-//        // camera permission was granted
-//
-//
-//        // start scanning
-//        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-//          console.log('Scanned something', text);
-//
-//          this.qrScanner.hide(); // hide camera preview
-//          scanSub.unsubscribe(); // stop scanning
-//        });
-//
-//      } else if (status.denied) {
-//        // camera permission was permanently denied
-//        // you must use QRScanner.openSettings() method to guide the user to the settings page
-//        // then they can grant the permission from there
-//      } else {
-//        // permission was denied, but not permanently. You can ask for permission again at a later time.
-//      }
-//   })
-//   .catch((e: any) => console.log('Error is', e));

@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      QR-Code Scanner
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div class="ion-padding">
       <ion-button (click)="startScanning()" expand="full">qrscanner</ion-button>
       <p *ngIf="qrText">QR Scan text: {{ qrText }}</p>
   </div>
+
+  <div class="ion-padding">
+    <ion-button (click)="toPage('test')">Test Page</ion-button>
+  </div>
+
 </ion-content>
+
+<div class="ion-padding" id="backButton">
+    <ion-button (click)="stopScanning()" expand="full">stop</ion-button>
+</div>
