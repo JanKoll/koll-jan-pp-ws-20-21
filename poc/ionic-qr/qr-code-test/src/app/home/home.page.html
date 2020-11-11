@@ -9,16 +9,11 @@
 <ion-content [fullscreen]="true">
 
   <div class="ion-padding">
-      <ion-button (click)="startScanning()" expand="full">qrscanner</ion-button>
-      <p *ngIf="qrText">QR Scan text: {{ qrText }}</p>
-  </div>
-
-  <div class="ion-padding">
-    <ion-button (click)="toPage('test')">Test Page</ion-button>
+      <ion-button (click)="startScanning()" expand="full">QR-Code Scannen</ion-button>
   </div>
 
 </ion-content>
 
 <div class="ion-padding" id="backButton">
-    <ion-button (click)="stopScanning()" expand="full">stop</ion-button>
+    <ion-button (click)="stopScanning()" expand="full">Abbrechen</ion-button>
 </div>
