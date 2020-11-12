@@ -1,16 +1,19 @@
 ## QR Code auslesen mit Ionic
 
-### Installationen (IOS Platform)
+### Platform Installationen (IOS/Android)
 
-1. Xcode command line tools installieren
-`xcode-select --install`
+**Ios** (Xcode)
+Dokumentation zur Installation [hier](https://ionicframework.com/docs/developing/ios).
 
-2. 2 In Xcode Anmelden und IOS Simulator Herunterladen und zu Simulierendes Gerät auswählen.
+**Android** (Android Studio)
+Dokumentation zur Installation [hier](https://ionicframework.com/docs/developing/android).
 
-3. Cordova Aufsetzen
-`npm install -g ios-sim`
-`brew install ios-deploy`
-
+Notiz:
+Unter Android muss für das __ActivityCompat__ Modul die AndroidX version verwendet werden. Dazu muss in `src/main/java/com/bitpay/cordova/qrscanner/QRScanner.java` folgendes verändert werden.
+```
+// import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat; // <- AndroidX Libary
+```
 
 ### Ionic Installieren
 
@@ -19,7 +22,7 @@
 
 2. Um die App zu starten muss im Verzeichnis der Befehl `ionic serve` ausgeführt werden.
 
-
+<!--
 ### Projekt in Xcode ausführen
 
-Nach der Ionic Installation muss im Projektordner der Befehl `ionic capacitor copy ios` ausgeführt werden um das Projekt in Xcode zu Clonen. Dann kann es mit `ionic capacitor open ios` in Xcode geöffnet werden (alternativ in Xcode zu Verzeichnis navigieren).
+Nach der Ionic Installation muss im Projektordner der Befehl `ionic capacitor copy ios` ausgeführt werden um das Projekt in Xcode zu Clonen. Dann kann es mit `ionic capacitor open ios` in Xcode geöffnet werden (alternativ in Xcode zu Verzeichnis navigieren). -->
