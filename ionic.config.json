@@ -1,0 +1,7 @@
+{
+  "name": "Maxcine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

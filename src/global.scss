@@ -1,0 +1,179 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "theme/fonts.scss";
+
+// Colors
+$primary: #006a69;
+$secondary: #64b451;
+$tertiary: #a7d19c;
+$success: #2dd36f;
+$warning: #ffc409;
+$danger: #eb445a;
+$dark: #1a171b;
+$medium: #a8a8a7;
+$light: #eeeded;
+
+:root {
+  --ion-font-family:  'Roboto'!important;
+  font-family:  'Roboto' !important;
+}
+
+app-home {
+  background-color: $primary;
+}
+
+ion-content {
+  --ion-background-color: transparent;
+  --color: #eeeded;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    max-height: 800px;
+    background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  }
+}
+
+ion-toolbar {
+  --background: #64b451;
+  --color: #eeeded;
+  --min-height: 4rem;
+
+  ion-title {
+    svg {
+      height: 1.25rem;
+    }
+  }
+}
+
+ion-card {
+  --color: #eeeded;
+  --background: #64b451;
+  border: .375rem solid $light;
+  border-radius: 1rem;
+
+  ion-card-title {
+    --ion-font-family:  'Merriweather'!important;
+    font-family:  'Merriweather' !important;
+  }
+}
+
+ion-split-pane {
+  ion-list {
+    margin-bottom: 1rem;
+    
+    ion-list-header {
+      --color: #eeeded;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      // --background: rgba(#eeeded, .5);
+      &:before {
+        content: "";
+        top: 35%;
+        bottom: -5%;
+        left: 0;
+        width: 5px;
+        background: $secondary;
+        position: absolute;
+      }
+    }
+    ion-item {
+      --color: #eeeded;
+    }
+  }
+}
+
+.ion-padding-horizontal {
+  padding: 0 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test {}
