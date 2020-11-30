@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="guide" color="light"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ articleId }}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-text color="light" *ngIf="result">
+    <p>{{ result.intro }}</p>
+  </ion-text>
+
+</ion-content>
