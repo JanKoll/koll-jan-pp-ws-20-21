@@ -18,4 +18,9 @@ export class GuidePage implements OnInit {
       this.data = json;
     });
   }
+
+  articlePrev(id) {
+    console.log(this.data[id]);
+
+  }
 }

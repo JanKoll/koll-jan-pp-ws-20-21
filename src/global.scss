@@ -28,15 +28,15 @@
 @import "theme/fonts.scss";
 
 // Colors
-$primary: #006a69;
-$secondary: #64b451;
+$primary: #006C66;
+$secondary: #64B451;
 $tertiary: #a7d19c;
 $success: #2dd36f;
 $warning: #ffc409;
 $danger: #eb445a;
-$dark: #1a171b;
+$dark: #000000;
 $medium: #a8a8a7;
-$light: #eeeded;
+$light: #EEEEEE;
 
 :root {
   --ion-font-family:  'Roboto'!important;
@@ -49,7 +49,7 @@ app-home {
 
 ion-content {
   --ion-background-color: transparent;
-  --color: #eeeded;
+  --color: #EEEEEE;
 
   &:before {
     content: "";
@@ -61,11 +61,17 @@ ion-content {
     max-height: 800px;
     background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
   }
+
+  &.solid-primary {
+    &:before {
+    background: $primary;
+  }
+  }
 }
 
 ion-toolbar {
-  --background: #64b451;
-  --color: #eeeded;
+  --background: #64B451;
+  --color: #EEEEEE;
   --min-height: 4rem;
 
   ion-title {
@@ -76,8 +82,8 @@ ion-toolbar {
 }
 
 ion-card {
-  --color: #eeeded;
-  --background: #64b451;
+  --color: #EEEEEE;
+  --background: #64B451;
   border: .375rem solid $light;
   border-radius: 1rem;
 
@@ -90,12 +96,12 @@ ion-card {
 ion-split-pane {
   ion-list {
     margin-bottom: 1rem;
-    
+
     ion-list-header {
-      --color: #eeeded;
+      --color: #EEEEEE;
       font-weight: bold;
       margin-bottom: .5rem;
-      // --background: rgba(#eeeded, .5);
+      // --background: rgba(#EEEEEE, .5);
       &:before {
         content: "";
         top: 35%;
@@ -107,7 +113,7 @@ ion-split-pane {
       }
     }
     ion-item {
-      --color: #eeeded;
+      --color: #EEEEEE;
     }
   }
 }
@@ -116,7 +122,16 @@ ion-split-pane {
   padding: 0 2.5rem;
 }
 
-
+.map-wrapper {
+  position: relative;
+  .coord {
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    background: red;
+    border-radius: 100%;
+  }
+}
 
 
 
