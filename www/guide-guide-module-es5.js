@@ -138,7 +138,27 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n\n<div class=\"content\">\n    <div class=\"head\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/img/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n\n</div>\n";
+      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"head\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/img/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n</div>\n";
+      /***/
+    },
+
+    /***/
+    "./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html":
+    /*!***********************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html ***!
+      \***********************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function node_modulesRawLoaderDistCjsJsSrcAppComponentsLegendLegendComponentHtml(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n\n      <p><b>Legende:</b></p>\n      <ul>\n        <li>Aktueller Standort</li>\n        <li>Station</li>\n        <li>Parkplatz</li>\n        <li>QR-Code Scanner</li>\n      </ul>\n    </div>\n</div>\n";
       /***/
     },
 
@@ -158,7 +178,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n\n    <div class=\"coord\"\n          style=\"{{ setObjectLocation(item.coords) }}\"\n\n          *ngFor=\"let item of data; let i = index\"\n\n          (click)=\"showModal(i)\"\n\n          >\n\n\n    </div>\n\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n\n    <div id=\"ion-padding\">\n      <p>Weite: {{ wp }}%</p>\n      <p>Höhe: {{ hp }}%</p>\n      <p>Latitude: {{ latitude }}</p>\n      <p>Longitude: {{ longitude }}</p>\n    </div>\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <ion-button class=\"info\" (click)=\"legend()\">i</ion-button>\n</ion-content>\n";
       /***/
     },
 
@@ -289,6 +309,116 @@
         /*! ./article-preview.component.scss */
         "./src/app/components/article-preview/article-preview.component.scss"))["default"]]
       })], ArticlePreviewComponent);
+      /***/
+    },
+
+    /***/
+    "./src/app/components/legend/legend.component.scss":
+    /*!*********************************************************!*\
+      !*** ./src/app/components/legend/legend.component.scss ***!
+      \*********************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function srcAppComponentsLegendLegendComponentScss(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGVnZW5kL2xlZ2VuZC5jb21wb25lbnQuc2NzcyJ9 */";
+      /***/
+    },
+
+    /***/
+    "./src/app/components/legend/legend.component.ts":
+    /*!*******************************************************!*\
+      !*** ./src/app/components/legend/legend.component.ts ***!
+      \*******************************************************/
+
+    /*! exports provided: LegendComponent */
+
+    /***/
+    function srcAppComponentsLegendLegendComponentTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "LegendComponent", function () {
+        return LegendComponent;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+      var LegendComponent = /*#__PURE__*/function () {
+        function LegendComponent(modalCtrl) {
+          _classCallCheck(this, LegendComponent);
+
+          this.modalCtrl = modalCtrl;
+        }
+
+        _createClass(LegendComponent, [{
+          key: "close",
+          value: function close() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.modalCtrl.dismiss();
+
+                    case 2:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "ngOnInit",
+          value: function ngOnInit() {}
+        }]);
+
+        return LegendComponent;
+      }();
+
+      LegendComponent.ctorParameters = function () {
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+        }];
+      };
+
+      LegendComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-legend',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! raw-loader!./legend.component.html */
+        "./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html"))["default"],
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! ./legend.component.scss */
+        "./src/app/components/legend/legend.component.scss"))["default"]]
+      })], LegendComponent);
       /***/
     },
 
@@ -494,6 +624,12 @@
       var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ../components/article-preview/article-preview.component */
       "./src/app/components/article-preview/article-preview.component.ts");
+      /* harmony import */
+
+
+      var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ../components/legend/legend.component */
+      "./src/app/components/legend/legend.component.ts");
 
       var GuidePage = /*#__PURE__*/function () {
         function GuidePage(modalCtrl) {
@@ -509,18 +645,13 @@
         }
 
         _createClass(GuidePage, [{
-          key: "getWp",
-          value: function getWp() {
-            return this.wp;
-          }
-        }, {
           key: "getCurrentLocation",
           value: function getCurrentLocation() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var coords, position, height, width;
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
-                  switch (_context2.prev = _context2.next) {
+                  switch (_context3.prev = _context3.next) {
                     case 0:
                       coords = {
                         "leftTop": {
@@ -532,11 +663,11 @@
                           "lon": 8.999337
                         }
                       };
-                      _context2.next = 3;
+                      _context3.next = 3;
                       return _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__["Geolocation"].getCurrentPosition();
 
                     case 3:
-                      position = _context2.sent;
+                      position = _context3.sent;
                       this.latitude = position.coords.latitude;
                       this.longitude = position.coords.longitude; // this.latitude = 47.767574;
                       // this.longitude = 8.996252;
@@ -548,10 +679,10 @@
 
                     case 10:
                     case "end":
-                      return _context2.stop();
+                      return _context3.stop();
                   }
                 }
-              }, _callee2, this);
+              }, _callee3, this);
             }));
           }
         }, {
@@ -587,33 +718,64 @@
         }, {
           key: "showModal",
           value: function showModal(id) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
               var modal;
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context3.next = 2;
+                      _context4.next = 2;
                       return this.modalCtrl.create({
                         component: _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__["ArticlePreviewComponent"],
                         componentProps: {
                           data: this.data[id]
                         },
                         // backdropDismiss:false,
+                        swipeToClose: true,
                         cssClass: 'articleprev'
                       });
 
                     case 2:
-                      modal = _context3.sent;
-                      _context3.next = 5;
+                      modal = _context4.sent;
+                      _context4.next = 5;
                       return modal.present();
 
                     case 5:
                     case "end":
-                      return _context3.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee3, this);
+              }, _callee4, this);
+            }));
+          }
+        }, {
+          key: "legend",
+          value: function legend() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var modal;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return this.modalCtrl.create({
+                        component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__["LegendComponent"],
+                        // backdropDismiss:false,
+                        swipeToClose: true,
+                        cssClass: 'legend'
+                      });
+
+                    case 2:
+                      modal = _context5.sent;
+                      _context5.next = 5;
+                      return modal.present();
+
+                    case 5:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
             }));
           }
         }]);

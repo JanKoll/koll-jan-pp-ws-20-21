@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 
 import { ArticlePreviewComponent } from '../components/article-preview/article-preview.component';
+import { LegendComponent } from '../components/legend/legend.component';
 
 @Component({
   selector: 'app-guide',
@@ -27,10 +28,6 @@ export class GuidePage implements OnInit {
     setInterval(() =>
       this.getCurrentLocation()
     , 5000);
-  }
-
-  getWp() {
-    return this.wp;
   }
 
   async getCurrentLocation() {
@@ -94,8 +91,21 @@ export class GuidePage implements OnInit {
         data: this.data[id]
       },
       // backdropDismiss:false,
+      swipeToClose: true,
       cssClass: 'articleprev'
     })
     await modal.present();
   }
+
+  async legend() {
+    const modal = await this.modalCtrl.create({
+      component: LegendComponent,
+      // backdropDismiss:false,
+      swipeToClose: true,
+      cssClass: 'legend'
+    })
+    await modal.present();
+  }
+
+
 }

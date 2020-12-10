@@ -81,7 +81,20 @@ var Geolocation = new GeolocationOriginal();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n<div class=\"content\">\n    <div class=\"head\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/img/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\">\n    <div class=\"head\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/img/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\">\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n\n      <p><b>Legende:</b></p>\n      <ul>\n        <li>Aktueller Standort</li>\n        <li>Station</li>\n        <li>Parkplatz</li>\n        <li>QR-Code Scanner</li>\n      </ul>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -94,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n\n    <div class=\"coord\"\n          style=\"{{ setObjectLocation(item.coords) }}\"\n\n          *ngFor=\"let item of data; let i = index\"\n\n          (click)=\"showModal(i)\"\n\n          >\n\n\n    </div>\n\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n\n    <div id=\"ion-padding\">\n      <p>Weite: {{ wp }}%</p>\n      <p>Höhe: {{ hp }}%</p>\n      <p>Latitude: {{ latitude }}</p>\n      <p>Longitude: {{ longitude }}</p>\n    </div>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <ion-button class=\"info\" (click)=\"legend()\">i</ion-button>\n</ion-content>\n");
 
 /***/ }),
 
@@ -159,6 +172,61 @@ ArticlePreviewComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./article-preview.component.scss */ "./src/app/components/article-preview/article-preview.component.scss")).default]
     })
 ], ArticlePreviewComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/legend/legend.component.scss":
+/*!*********************************************************!*\
+  !*** ./src/app/components/legend/legend.component.scss ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGVnZW5kL2xlZ2VuZC5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/components/legend/legend.component.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/components/legend/legend.component.ts ***!
+  \*******************************************************/
+/*! exports provided: LegendComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LegendComponent", function() { return LegendComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+let LegendComponent = class LegendComponent {
+    constructor(modalCtrl) {
+        this.modalCtrl = modalCtrl;
+    }
+    close() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.modalCtrl.dismiss();
+        });
+    }
+    ngOnInit() { }
+};
+LegendComponent.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+LegendComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-legend',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./legend.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/legend/legend.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./legend.component.scss */ "./src/app/components/legend/legend.component.scss")).default]
+    })
+], LegendComponent);
 
 
 
@@ -271,6 +339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/geolocation */ "./node_modules/@ionic-native/geolocation/index.js");
 /* harmony import */ var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/article-preview/article-preview.component */ "./src/app/components/article-preview/article-preview.component.ts");
+/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
+
 
 
 
@@ -281,9 +351,6 @@ let GuidePage = class GuidePage {
         this.modalCtrl = modalCtrl;
         this.getCurrentLocation();
         setInterval(() => this.getCurrentLocation(), 5000);
-    }
-    getWp() {
-        return this.wp;
     }
     getCurrentLocation() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -339,7 +406,19 @@ let GuidePage = class GuidePage {
                     data: this.data[id]
                 },
                 // backdropDismiss:false,
+                swipeToClose: true,
                 cssClass: 'articleprev'
+            });
+            yield modal.present();
+        });
+    }
+    legend() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const modal = yield this.modalCtrl.create({
+                component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__["LegendComponent"],
+                // backdropDismiss:false,
+                swipeToClose: true,
+                cssClass: 'legend'
             });
             yield modal.present();
         });

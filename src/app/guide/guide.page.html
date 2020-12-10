@@ -16,19 +16,11 @@
 
 <ion-content class="solid-primary">
   <div class="map-wrapper">
-
     <div class="coord"
-          style="{{ setObjectLocation(item.coords) }}"
-
-          *ngFor="let item of data; let i = index"
-
-          (click)="showModal(i)"
-
-          >
-
-
-    </div>
-
+      style="{{ setObjectLocation(item.coords) }}"
+      *ngFor="let item of data; let i = index"
+      (click)="showModal(i)"
+    ></div>
 
     <div class="location" style="right: {{wp}}%; top: {{hp}}%"></div>
 
@@ -36,12 +28,5 @@
 
   </div>
 
-
-    <div id="ion-padding">
-      <p>Weite: {{ wp }}%</p>
-      <p>Höhe: {{ hp }}%</p>
-      <p>Latitude: {{ latitude }}</p>
-      <p>Longitude: {{ longitude }}</p>
-    </div>
-
+  <div class="info" (click)="legend()">i</div>
 </ion-content>

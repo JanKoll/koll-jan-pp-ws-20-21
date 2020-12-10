@@ -38,8 +38,10 @@ $dark: #000000;
 $medium: #a8a8a7;
 $light: #EEEEEE;
 
-*:focus {
+* {
+  &:focus {
     outline: none;
+  }
 }
 
 :root {
@@ -53,6 +55,18 @@ $light: #EEEEEE;
   ion-title {
     font-size: 1.5rem;
     font-weight: 600;
+  }
+}
+
+// Hide Scroolbars
+
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -114,12 +128,19 @@ ion-toolbar {
 ion-card {
   --color: #EEEEEE;
   --background: #64B451;
-  border: .375rem solid $light;
+  border: .25rem solid $light;
   border-radius: 1rem;
 
+  ion-card-header {
+    padding: 2rem .25rem 1rem .25rem !important;
   ion-card-title {
-    --ion-font-family:  'Merriweather'!important;
-    font-family:  'Merriweather' !important;
+    font-weight: bold;
+    }
+  }
+
+  ion-card-content {
+    font-size: 1.125rem !important;
+    padding: 0rem .25rem 2rem .25rem !important;
   }
 }
 
@@ -128,22 +149,46 @@ ion-split-pane {
     margin-bottom: 1rem;
 
     ion-list-header {
-      --color: #EEEEEE;
+      --color: #006C66;
+      --background: #a7d19c;
+
+      min-height: unset;
       font-weight: 700;
-      margin-bottom: .5rem;
-      // --background: rgba(#EEEEEE, .5);
-      &:before {
-        content: "";
-        top: 35%;
-        bottom: -5%;
-        left: 0;
-        width: 5px;
-        background: $secondary;
-        position: absolute;
+      padding: .25rem 0 .25rem 1rem;
+
+      font-size: 1.25rem;
+
+      &:hover {
+        cursor: pointer;
       }
+
+
+      // margin-bottom: .5rem;
+      // --background: rgba(#EEEEEE, .5);
+      // &:before {
+      //   content: "";
+      //   top: 35%;
+      //   bottom: -5%;
+      //   left: 0;
+      //   width: 5px;
+      //   background: $secondary;
+      //   position: absolute;
+      // }
     }
     ion-item {
-      --color: #EEEEEE;
+      ion-label {
+        --color: #EEEEEE !important;
+
+        font-size: 1.25rem;
+        padding-left: .5rem;
+      }
+
+      &.ion-activated {
+        ion-label {
+          --color: #a7d19c !important;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
@@ -179,7 +224,6 @@ ion-split-pane {
 
 ion-modal {
   --background: unset;
-  padding: 10rem 1.5rem 1.5rem 1.5rem;
 
   .modal-wrapper {
     --background: transparent;
@@ -207,7 +251,70 @@ ion-modal {
     }
   }
 
+  &.legend {
+    padding: 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+
+
+    .modal-wrapper {
+      background: $light;
+      color: $primary;
+      padding: 1.5rem 1rem;
+
+      height: unset;
+      position: relative;
+      display: block;
+
+      app-legend {
+        height: unset;
+        position: relative;
+      }
+
+
+
+      .content {
+        display: block;
+
+        p {
+          margin-top: 0;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+      }
+    }
+
+  }
+
   &.articleprev {
+    padding:  5rem 1.5rem 1.5rem 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+    display: flex;
+
+    .modal-wrapper {
+      color: $primary;
+      align-items: flex-end;
+      align-content: flex-end;
+      display: flex;
+
+      height: unset;
+      max-height: 100%;
+      position: relative;
+      display: block;
+      overflow: auto;
+      --overflow: auto;
+
+      app-article-preview {
+        height: unset;
+        position: relative;
+      }
+    }
+
     .content {
       height: 100%;
 
@@ -237,16 +344,13 @@ ion-modal {
           font-size: 2rem;
           padding-left: 4.5rem;
           margin-bottom: 0;
+          color: $light;
         }
       }
 
       .text {
-        color: $primary;
         background: $light;
         padding: 1rem;
-        height: calc(100% - 4.5rem);
-        overflow-x: hidden;
-        overflow-y: auto;
         p {
           margin-top: 0;
         }
@@ -259,7 +363,7 @@ ion-modal {
       .routerbtn {
         color: $primary;
         background: $light;
-        padding: 1rem 0;
+        padding-top: 1rem;
         display: flex;
         justify-content: flex-end;
         ion-button {
@@ -303,10 +407,29 @@ ion-modal {
         }
       }
     }
-
   }
 }
 
+div.info {
+  position: fixed;
+  bottom: .75rem;
+  right: .75rem;
+  background: $primary;
+  border: .25rem solid $light;
+  color: $light;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  line-height: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  box-sizing: border-box;
+  box-shadow: 0 .5rem .5rem rgba($dark, .15);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 
 

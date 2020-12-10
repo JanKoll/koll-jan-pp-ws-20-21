@@ -12,8 +12,9 @@
         </ion-header>
 
         <ion-list id="inbox-list">
-          <ion-list-header [routerLink]="['/guide/']">Digitaler Guide</ion-list-header>
-
+          <ion-menu-toggle auto-hide="false">
+            <ion-list-header [routerLink]="['/guide/']">Digitaler Guide</ion-list-header>
+          </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false" *ngFor="let item of data; let i = index">
             <ion-item routerDirection="forward" [routerLink]="['/article/', item.name]" lines="none" detail="false">
               <ion-label>{{ item.name }}</ion-label>
