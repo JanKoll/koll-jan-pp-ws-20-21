@@ -1,0 +1,12 @@
+ion-slides {
+  margin: 0 -1.5rem !important;
+  ion-slide {
+    width: 100% !important;
+    object-fit: cover;
+    overflow: hidden;
+    ion-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
