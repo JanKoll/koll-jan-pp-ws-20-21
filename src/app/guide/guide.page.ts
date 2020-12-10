@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+
+import { ArticlePreviewComponent } from '../components/article-preview/article-preview.component';
 
 @Component({
   selector: 'app-guide',
@@ -10,7 +13,7 @@ export class GuidePage implements OnInit {
   data: any;
   route: Router;
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
     fetch('./assets/data/guide.json').then(res => res.json())
@@ -19,8 +22,15 @@ export class GuidePage implements OnInit {
     });
   }
 
-  articlePrev(id) {
-    console.log(this.data[id]);
-
+  async showModal(id) {
+    const modal = await this.modalCtrl.create({
+      component: ArticlePreviewComponent,
+      componentProps: {
+        data: this.data[id]
+      },
+      // backdropDismiss:false,
+      cssClass: 'articleprev'
+    })
+    await modal.present();
   }
 }

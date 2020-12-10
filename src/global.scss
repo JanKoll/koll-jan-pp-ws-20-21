@@ -38,39 +38,69 @@ $dark: #000000;
 $medium: #a8a8a7;
 $light: #EEEEEE;
 
+*:focus {
+    outline: none;
+}
+
 :root {
   --ion-font-family:  'Roboto'!important;
   font-family:  'Roboto' !important;
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  ion-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+body {
+  background: linear-gradient(to bottom, $secondary 5%, $primary 60%) !important;
+  // background: $primary;
+
+
+  //
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   height: 100%;
+  //   max-height: 800px;
+  //   background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  // }
 }
 
 app-home {
-  background-color: $primary;
+  background-color: transparent;
 }
 
 ion-content {
+  background: linear-gradient(to bottom, $secondary 5%, $primary 60%) !important;
   --ion-background-color: transparent;
   --color: #EEEEEE;
 
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100%;
-    max-height: 800px;
-    background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
-  }
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   height: 100%;
+  //   max-height: 800px;
+  //   background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  // }
 
   &.solid-primary {
-    &:before {
-    background: $primary;
-  }
+    --ion-background-color: #006C66;
   }
 }
 
 ion-toolbar {
-  --background: #64B451;
+  --background: transparent;
   --color: #EEEEEE;
   --min-height: 4rem;
 
@@ -99,7 +129,7 @@ ion-split-pane {
 
     ion-list-header {
       --color: #EEEEEE;
-      font-weight: bold;
+      font-weight: 700;
       margin-bottom: .5rem;
       // --background: rgba(#EEEEEE, .5);
       &:before {
@@ -130,10 +160,139 @@ ion-split-pane {
     width: 3rem;
     background: red;
     border-radius: 100%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 
+ion-modal {
+  --background: unset;
+  padding: 10rem 1.5rem 1.5rem 1.5rem;
 
+  .modal-wrapper {
+    --background: transparent;
+  }
+
+  .modal-shadow {
+    display: none;
+  }
+
+  app-article-preview {
+    &.ion-page {
+      // overflow: scroll;
+    }
+  }
+
+  .text {
+    position: relative;
+    .close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      background: none;
+      color: $dark;
+      cursor: pointer;
+    }
+  }
+
+  &.articleprev {
+    .content {
+      height: 100%;
+
+      .head {
+        position: relative;
+        min-height: 4.5rem;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 1rem;
+        .icon {
+          height: 4rem;
+          width: 4rem;
+          overflow: hidden;
+          border-radius: 100%;
+          border: solid .25rem $light;
+          background: $primary;
+          position: absolute;
+          bottom: 0;
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+
+        h2 {
+          font-weight: 700;
+          font-size: 2rem;
+          padding-left: 4.5rem;
+          margin-bottom: 0;
+        }
+      }
+
+      .text {
+        color: $primary;
+        background: $light;
+        padding: 1rem;
+        height: calc(100% - 4.5rem);
+        overflow-x: hidden;
+        overflow-y: auto;
+        p {
+          margin-top: 0;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }
+
+      .routerbtn {
+        color: $primary;
+        background: $light;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: flex-end;
+        ion-button {
+          --color: #006C66;
+          --background: #EEEEEE;
+          --background-hover: #006C66;
+          --color-hover: #EEEEEE;
+
+          --border-radius: unset;
+          --border-color: #006C66;
+          --border-width: .25rem;
+          --border-style: solid;
+
+          --padding-top: .5rem;
+          --padding-end: .75rem;
+          --padding-bottom: .5rem;
+          --padding-start: .75rem;
+
+          height: unset;
+          position: relative;
+          margin-right: 2.5rem;
+
+          font-size: 1.125rem;
+          font-weight: 700;
+          letter-spacing: .5px;
+
+
+          &:after {
+            content: ">";
+            text-align: center;
+            height: 2.625rem;
+            width: 2.625rem;
+            line-height: 2.625rem;
+            background: $primary;
+            color: $light;
+            position: absolute;
+            top: 0;
+            right: -2.5rem;
+            // border: .25rem solid $primary;
+          }
+        }
+      }
+    }
+
+  }
+}
 
 
 
