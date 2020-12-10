@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="solid-primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home" color="light"></ion-back-button>
     </ion-buttons>
@@ -14,13 +14,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="solid-primary">
+<ion-content class="solid-primary" [fullscreen]="true">
   <div class="map-wrapper">
     <div class="coord"
       style="{{ setObjectLocation(item.coords) }}"
       *ngFor="let item of data; let i = index"
       (click)="showModal(i)"
-    ></div>
+    >!</div>
 
     <div class="location" style="right: {{wp}}%; top: {{hp}}%"></div>
 
@@ -29,4 +29,8 @@
   </div>
 
   <div class="info" (click)="legend()">i</div>
+  <div id="qropen" class="info" (click)="startScanning()">Q</div>
+
 </ion-content>
+
+<div id="qrclose" (click)="stopScanning()">X</div>

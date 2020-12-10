@@ -178,7 +178,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <ion-button class=\"info\" (click)=\"legend()\">i</ion-button>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar class=\"solid-primary\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\" [fullscreen]=\"true\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <div class=\"info\" (click)=\"legend()\">i</div>\n  <div id=\"qropen\" class=\"info\" (click)=\"startScanning()\">Q</div>\n\n</ion-content>\n\n<div id=\"qrclose\" (click)=\"stopScanning()\">X</div>\n";
       /***/
     },
 
@@ -609,42 +609,83 @@
       /* harmony import */
 
 
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/router */
+      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @ionic/angular */
       "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
-      var _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic-native/geolocation */
       "./node_modules/@ionic-native/geolocation/index.js");
       /* harmony import */
 
 
-      var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @ionic-native/qr-scanner/ngx */
+      "./node_modules/@ionic-native/qr-scanner/__ivy_ngcc__/ngx/index.js");
+      /* harmony import */
+
+
+      var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ../components/article-preview/article-preview.component */
       "./src/app/components/article-preview/article-preview.component.ts");
       /* harmony import */
 
 
-      var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! ../components/legend/legend.component */
-      "./src/app/components/legend/legend.component.ts");
+      "./src/app/components/legend/legend.component.ts"); // Import Components
+
 
       var GuidePage = /*#__PURE__*/function () {
-        function GuidePage(modalCtrl) {
+        // route: Router;
+        function GuidePage(modalCtrl, platform, alertController, qrScanner, route) {
           var _this = this;
 
           _classCallCheck(this, GuidePage);
 
           this.modalCtrl = modalCtrl;
+          this.platform = platform;
+          this.alertController = alertController;
+          this.qrScanner = qrScanner;
+          this.route = route; // Call and Update geo Location
+
           this.getCurrentLocation();
           setInterval(function () {
             return _this.getCurrentLocation();
-          }, 5000);
-        }
+          }, 5000); // subscribe to cammera close
+
+          this.platform.backButton.subscribeWithPriority(0, function () {
+            // Android Physical Back Button???
+            // document.getElementsByTagName('body')[0].style.opacity = '1';
+            // Use Class to Toggle Backgound Visibility
+            _this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+
+            _this.qrScanner.destroy();
+          });
+        } // fetch data
+
 
         _createClass(GuidePage, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {
+            var _this2 = this;
+
+            fetch('./assets/data/guide.json').then(function (res) {
+              return res.json();
+            }).then(function (json) {
+              _this2.data = json; // console.log(this.data.map(x => x.name));
+            });
+          } // Call and set current geo location
+
+        }, {
           key: "getCurrentLocation",
           value: function getCurrentLocation() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
@@ -664,7 +705,7 @@
                         }
                       };
                       _context3.next = 3;
-                      return _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__["Geolocation"].getCurrentPosition();
+                      return _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_4__["Geolocation"].getCurrentPosition();
 
                     case 3:
                       position = _context3.sent;
@@ -684,7 +725,8 @@
                 }
               }, _callee3, this);
             }));
-          }
+          } // Set artefact geo location
+
         }, {
           key: "setObjectLocation",
           value: function setObjectLocation(data) {
@@ -703,18 +745,8 @@
             var ycoord = (coords.leftTop.lat - data.x) * 100 / height;
             var xcoord = (coords.rightBot.lon - data.y) * 100 / width;
             return "right:" + xcoord + "%; top:" + ycoord + "%;";
-          }
-        }, {
-          key: "ngOnInit",
-          value: function ngOnInit() {
-            var _this2 = this;
+          } // Modal controllers
 
-            fetch('./assets/data/guide.json').then(function (res) {
-              return res.json();
-            }).then(function (json) {
-              _this2.data = json;
-            });
-          }
         }, {
           key: "showModal",
           value: function showModal(id) {
@@ -726,7 +758,7 @@
                     case 0:
                       _context4.next = 2;
                       return this.modalCtrl.create({
-                        component: _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__["ArticlePreviewComponent"],
+                        component: _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_6__["ArticlePreviewComponent"],
                         componentProps: {
                           data: this.data[id]
                         },
@@ -759,7 +791,7 @@
                     case 0:
                       _context5.next = 2;
                       return this.modalCtrl.create({
-                        component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__["LegendComponent"],
+                        component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_7__["LegendComponent"],
                         // backdropDismiss:false,
                         swipeToClose: true,
                         cssClass: 'legend'
@@ -777,6 +809,138 @@
                 }
               }, _callee5, this);
             }));
+          } // QR-Code Functions
+
+        }, {
+          key: "accessCamera",
+          value: function accessCamera() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var _this3 = this;
+
+              var alert;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      _context6.next = 2;
+                      return this.alertController.create({
+                        // cssClass: 'my-custom-class',
+                        header: 'Kamera deaktiviert',
+                        message: 'Wenn du einen QR-Code Scannen möchtest, erlaube bitte den Kamera zugriff in den Einstellungen.',
+                        buttons: [{
+                          text: 'Abbrechen',
+                          role: 'cancel',
+                          cssClass: 'secondary'
+                        }, {
+                          text: 'Einstellungen',
+                          handler: function handler() {
+                            _this3.qrScanner.openSettings();
+                          }
+                        }]
+                      });
+
+                    case 2:
+                      alert = _context6.sent;
+                      _context6.next = 5;
+                      return alert.present();
+
+                    case 5:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+          }
+        }, {
+          key: "undefinedQrCode",
+          value: function undefinedQrCode() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              var alert;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      _context7.next = 2;
+                      return this.alertController.create({
+                        // cssClass: 'my-custom-class',
+                        header: 'Fehler',
+                        message: 'Der QR-Code ist entweder nicht leserlich oder gehört nicht zur Tour.',
+                        buttons: ['Okay']
+                      });
+
+                    case 2:
+                      alert = _context7.sent;
+                      _context7.next = 5;
+                      return alert.present();
+
+                    case 5:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+          }
+        }, {
+          key: "startScanning",
+          value: function startScanning() {
+            var _this4 = this;
+
+            // Optionally request the permission early
+            this.qrScanner.prepare().then(function (status) {
+              if (status.authorized) {
+                _this4.qrScanner.show(); // Use Class to Toggle Backgound Visibility
+
+
+                _this4.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive"); // debugger
+
+                _this4.scanSub = _this4.qrScanner.scan().subscribe(function (textFound) {
+                  console.log(textFound); // Use Class to Toggle Backgound Visibility
+
+                  _this4.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive"); // Route to Page with textFound var
+                  // Array contains all possible routings
+                  // var routs = [];
+                  // this.route.config.forEach(elements => {
+                  //   routs.push(elements.path)
+                  // });
+                  // Check if QR-Code is valid
+
+                  if (_this4.data.map(function (x) {
+                    return x.name;
+                  }).includes(textFound)) {
+                    _this4.route.navigate(['/article/' + textFound]);
+
+                    console.log(textFound);
+
+                    _this4.qrScanner.destroy();
+                  } else {
+                    _this4.undefinedQrCode();
+
+                    _this4.qrScanner.destroy();
+                  }
+                }, function (err) {
+                  alert(JSON.stringify(err));
+                });
+              } else if (status.denied) {// The video preview will remain black, and scanning is disabled. We can
+                // try to ask the user to change their mind, but we'll have to send them
+                // to their device settings with `QRScanner.openSettings()`.
+              } else {// we didn't get permission, but we didn't get permanently denied. (On
+                  // Android, a denial isn't permanent unless the user checks the "Don't
+                  // ask again" box.) We can ask again at the next relevant opportunity.
+                }
+            })["catch"](function (e) {
+              console.log('Error is', e);
+
+              _this4.accessCamera();
+            });
+          }
+        }, {
+          key: "stopScanning",
+          value: function stopScanning() {
+            // Use Class to Toggle Backgound Visibility
+            this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+            this.qrScanner.destroy();
           }
         }]);
 
@@ -785,7 +949,15 @@
 
       GuidePage.ctorParameters = function () {
         return [{
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]
+        }, {
+          type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["QRScanner"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
         }];
       };
 
