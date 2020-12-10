@@ -11,12 +11,22 @@
     "icon": "hennhouse.png",
     "previmg": "hennhouse.png",
     "coords": {"x":47.765598,"y":8.998595},
-    "intro": "Der ehemalige Hühnerstall ist nun ein Multimediahaus. Hier können aktuelle Forschungsprojekte in spannenden Filmen und Shows erleben werden.",
+    "intro": "Ein ehemaliger Hühnerstall wurde zum Multimediahaus. Groß und Klein können unsere aktuellen Forschungsprojekte in spannenden Filmen und Shows erleben.",
     "body": [
       {
         "type": "text",
+        "hedding": "Öffnungszeiten:",
+        "content": "März-November täglich 9-19 Uhr \nDezember-Februar täglich 11-19 Uhr"
+      },
+      {
+        "type": "audio",
+        "hedding": "Die Geschichte",
+        "content": "test.mp3"
+      },
+      {
+        "type": "img-slider",
         "hedding": "Lorem Ipsum",
-        "content": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui."
+        "content": ["hennhouse.png","hennhouse.png","hennhouse.png","hennhouse.png"]
       },
       {
         "type": "img",
@@ -24,19 +34,9 @@
         "content": "hennhouse.png"
       },
       {
-        "type": "img-slider",
-        "hedding": "Lorem Ipsum",
-        "content": ["hennhouse.png","hennhouse.png"]
-      },
-      {
         "type": "video",
         "hedding": "Lorem Ipsum",
-        "content": "https://www.youtube.com/embed/adsa4eEOzN0"
-      },
-      {
-        "type": "audio",
-        "hedding": "Lorem Ipsum",
-        "content": "hennhouse.png"
+        "content": "vj3Gh7WKWkg"
       }
     ]
   },

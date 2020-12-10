@@ -39,52 +39,55 @@
 
     <div *ngFor="let item of result.body; index as i;">
 
-      <div [ngSwitch]="item.type">
+      <div [ngSwitch]="item.type" class="section-wrap">
 
         <!-- Text -->
-       <div *ngSwitchCase="'text'">
-         <h4>{{ item.hedding }}</h4>
-         <p>{{ item.content }}</p>
-       </div>
+        <div *ngSwitchCase="'text'">
+          <h4>{{ item.hedding }}</h4>
+          <p>{{ item.content }}</p>
+        </div>
 
-       <!-- img -->
-       <div *ngSwitchCase="'img'">
-         <h4>{{ item.hedding }}</h4>
-         <ion-img src="../assets/data/img/{{ result.name }}/{{ item.content }}" alt="{{ result.name }} Artikel Bild"></ion-img>
-       </div>
+        <!-- img -->
+        <div *ngSwitchCase="'img'">
+          <h4>{{ item.hedding }}</h4>
+          <ion-img src="../assets/data/media/{{ result.name }}/{{ item.content }}" alt="{{ result.name }} Artikel Bild"></ion-img>
+        </div>
 
-       <!-- slider -->
-       <div *ngSwitchCase="'img-slider'">
-         <h4>{{ item.hedding }}</h4>
+        <!-- slider -->
+        <div *ngSwitchCase="'img-slider'">
+          <h4>{{ item.hedding }}</h4>
          <!-- <p>{{ item.content }}</p> -->
 
          <ion-slides pager="true" [options]="slideOpts">
-              <ion-slide *ngFor="let img of item.content">
-                <ion-img src="../assets/data/img/{{ result.name }}/{{ img }}" alt="{{ result.name }} Artikel Bild"></ion-img>
-              </ion-slide>
+            <ion-slide *ngFor="let img of item.content">
+              <ion-img src="../assets/data/media/{{ result.name }}/{{ img }}" alt="{{ result.name }} Artikel Bild"></ion-img>
+            </ion-slide>
           </ion-slides>
-       </div>
+        </div>
 
-       <!-- video -->
-       <div *ngSwitchCase="'video'">
-         <h4>{{ item.hedding }}</h4>
+        <!-- video -->
+        <div *ngSwitchCase="'video'">
+          <h4>{{ item.hedding }}</h4>
+          <iframe [src]="updateVideoUrl(item.content)" allowfullscreen>Ups, da ist etwas schief gelaufen!</iframe>
+        </div>
 
-         <p>https://www.youtube.com/embed/{{ item.content }}</p>
-       </div>
+        <!-- audio -->
+        <div *ngSwitchCase="'audio'">
+          <h4>{{ item.hedding }}</h4>
 
-       <!-- audio -->
-       <!-- <div *ngSwitchCase="'audio'">
-         <h4>{{ item.hedding }}</h4>
-         <p>{{ item.content }}</p>
-       </div> -->
+          <audio controls>
+            <source src="../assets/data/media/{{ result.name }}/{{ item.content }}" type="audio/mpeg">
+            Ups, da ist etwas schief gelaufen!
+          </audio>
+        </div>
 
+        <!-- default -->
+        <div *ngSwitchDefault>
+          <p>Error!</p>
+          <h4>{{ item.hedding }}</h4>
+          <p>{{ item.content }}</p>
+        </div>
 
-
-
-
-       <div *ngSwitchDefault>
-         {{ item.type }}
-       </div>
       </div>
     </div>
 
@@ -96,5 +99,4 @@
 
 
   </div>
-
 </ion-content>

@@ -37,9 +37,9 @@ export class GuidePage implements OnInit {
   )  {
     // Call and Update geo Location
     this.getCurrentLocation()
-    setInterval(() =>
-      this.getCurrentLocation()
-    , 5000);
+    // setInterval(() =>
+    //   this.getCurrentLocation()
+    // , 5000);
 
     // subscribe to cammera close
     this.platform.backButton.subscribeWithPriority(0, () => {
@@ -59,8 +59,9 @@ export class GuidePage implements OnInit {
     fetch('./assets/data/guide.json').then(res => res.json())
     .then(json => {
       this.data = json;
-      // console.log(this.data.map(x => x.name));
     });
+
+    this.getCurrentLocation()
   }
 
   // Call and set current geo location

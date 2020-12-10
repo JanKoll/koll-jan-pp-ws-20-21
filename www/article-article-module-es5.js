@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"guide\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      {{ articleId }}\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n\n  <div class=\"ion-padding\">\n    <ion-text color=\"light\" *ngIf=\"result\">\n      <p>{{ result.intro }}</p>\n    </ion-text>\n  </div>\n\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"guide\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      {{ articleId }}\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n\n  <div class=\"article\" *ngIf=\"result\">\n\n\n    <!-- intro section -->\n\n    <div class=\"icon-header\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ result.icon }}\" alt=\"{{ result.name }} Icon\">\n      </div>\n\n      <p>Mehr erleben im</p>\n      <h2>{{ result.name }}</h2>\n    </div>\n\n    <ion-text color=\"light\">\n      <p>{{ result.intro }}</p>\n    </ion-text>\n\n\n    <!-- content section -->\n\n    <div *ngFor=\"let item of result.body; index as i;\">\n\n      <div [ngSwitch]=\"item.type\">\n\n        <!-- Text -->\n       <div *ngSwitchCase=\"'text'\">\n         <h4>{{ item.hedding }}</h4>\n         <p>{{ item.content }}</p>\n       </div>\n\n       <!-- img -->\n       <div *ngSwitchCase=\"'img'\">\n         <h4>{{ item.hedding }}</h4>\n         <ion-img src=\"../assets/data/img/{{ result.name }}/{{ item.content }}\" alt=\"{{ result.name }} Artikel Bild\"></ion-img>\n       </div>\n\n       <!-- slider -->\n       <div *ngSwitchCase=\"'img-slider'\">\n         <h4>{{ item.hedding }}</h4>\n         <!-- <p>{{ item.content }}</p> -->\n\n         <ion-slides pager=\"true\" [options]=\"slideOpts\">\n              <ion-slide *ngFor=\"let img of item.content\">\n                <ion-img src=\"../assets/data/img/{{ result.name }}/{{ img }}\" alt=\"{{ result.name }} Artikel Bild\"></ion-img>\n              </ion-slide>\n          </ion-slides>\n       </div>\n\n       <!-- video -->\n       <div *ngSwitchCase=\"'video'\">\n         <h4>{{ item.hedding }}</h4>\n         <iframe [src]=\"updateVideoUrl(item.content)\" allowfullscreen>Ups, da ist etwas schief gelaufen!</iframe>\n       </div>\n\n       <!-- audio -->\n       <!-- <div *ngSwitchCase=\"'audio'\">\n         <h4>{{ item.hedding }}</h4>\n         <p>{{ item.content }}</p>\n       </div> -->\n\n\n\n\n\n       <div *ngSwitchDefault>\n         {{ item.type }}\n       </div>\n      </div>\n    </div>\n\n    <!-- <div [ngSwitch]=\"switch_expression\">\n       <some-element *ngSwitchCase=\"match_expression_1\">...</some-element>\n\n       <some-element *ngSwitchDefault>...</some-element>\n    </div> -->\n\n\n  </div>\n\n</ion-content>\n";
       /***/
     },
 
@@ -216,12 +216,26 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/router */
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/platform-browser */
+      "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 
       var ArticlePage = /*#__PURE__*/function () {
-        function ArticlePage(route) {
+        function ArticlePage(route, sanitizer, navCtrl) {
           _classCallCheck(this, ArticlePage);
 
           this.route = route;
+          this.sanitizer = sanitizer;
+          this.navCtrl = navCtrl;
         }
 
         _createClass(ArticlePage, [{
@@ -241,6 +255,16 @@
               });
             });
           }
+        }, {
+          key: "updateVideoUrl",
+          value: function updateVideoUrl(id) {
+            // Appending an ID to a YouTube URL is safe.
+            // Always make sure to construct SafeValue objects as
+            // close as possible to the input data, so
+            // that it's easier to check if the value is safe.
+            var dangerousVideoUrl = 'https://www.youtube.com/embed/' + id + '?rel=0&showinfo=0';
+            return this.sanitizer.bypassSecurityTrustResourceUrl(dangerousVideoUrl);
+          }
         }]);
 
         return ArticlePage;
@@ -249,6 +273,10 @@
       ArticlePage.ctorParameters = function () {
         return [{
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+        }, {
+          type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"]
         }];
       };
 
