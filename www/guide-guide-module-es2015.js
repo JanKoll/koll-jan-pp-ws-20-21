@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <div class=\"info\" (click)=\"legend()\">i</div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"ion-no-border\">\n  <ion-toolbar class=\"solid-primary\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\" [fullscreen]=\"true\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <div class=\"info\" (click)=\"legend()\">i</div>\n  <div id=\"qropen\" class=\"info\" (click)=\"startScanning()\">Q</div>\n\n</ion-content>\n\n<div id=\"qrclose\" (click)=\"stopScanning()\">X</div>\n");
 
 /***/ }),
 
@@ -336,22 +336,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GuidePage", function() { return GuidePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/geolocation */ "./node_modules/@ionic-native/geolocation/index.js");
-/* harmony import */ var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/article-preview/article-preview.component */ "./src/app/components/article-preview/article-preview.component.ts");
-/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/geolocation */ "./node_modules/@ionic-native/geolocation/index.js");
+/* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/article-preview/article-preview.component */ "./src/app/components/article-preview/article-preview.component.ts");
+/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
 
 
 
 
+
+
+// Import Components
 
 
 let GuidePage = class GuidePage {
-    constructor(modalCtrl) {
+    // route: Router;
+    constructor(modalCtrl, platform, alertController, qrScanner, route) {
         this.modalCtrl = modalCtrl;
+        this.platform = platform;
+        this.alertController = alertController;
+        this.qrScanner = qrScanner;
+        this.route = route;
+        // Call and Update geo Location
         this.getCurrentLocation();
         setInterval(() => this.getCurrentLocation(), 5000);
+        // subscribe to cammera close
+        this.platform.backButton.subscribeWithPriority(0, () => {
+            // Android Physical Back Button???
+            // document.getElementsByTagName('body')[0].style.opacity = '1';
+            // Use Class to Toggle Backgound Visibility
+            this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+            this.qrScanner.destroy();
+        });
     }
+    // fetch data
+    ngOnInit() {
+        fetch('./assets/data/guide.json').then(res => res.json())
+            .then(json => {
+            this.data = json;
+            // console.log(this.data.map(x => x.name));
+        });
+    }
+    // Call and set current geo location
     getCurrentLocation() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let coords = {
@@ -364,7 +392,7 @@ let GuidePage = class GuidePage {
                     "lon": 8.999337
                 }
             };
-            let position = yield _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_3__["Geolocation"].getCurrentPosition();
+            let position = yield _ionic_native_geolocation__WEBPACK_IMPORTED_MODULE_4__["Geolocation"].getCurrentPosition();
             this.latitude = position.coords.latitude;
             this.longitude = position.coords.longitude;
             // this.latitude = 47.767574;
@@ -375,6 +403,7 @@ let GuidePage = class GuidePage {
             this.wp = ((coords.rightBot.lon - this.longitude) * 100) / width;
         });
     }
+    // Set artefact geo location
     setObjectLocation(data) {
         let coords = {
             "leftTop": {
@@ -392,16 +421,11 @@ let GuidePage = class GuidePage {
         let xcoord = ((coords.rightBot.lon - data.y) * 100) / width;
         return "right:" + xcoord + "%; top:" + ycoord + "%;";
     }
-    ngOnInit() {
-        fetch('./assets/data/guide.json').then(res => res.json())
-            .then(json => {
-            this.data = json;
-        });
-    }
+    // Modal controllers
     showModal(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const modal = yield this.modalCtrl.create({
-                component: _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_4__["ArticlePreviewComponent"],
+                component: _components_article_preview_article_preview_component__WEBPACK_IMPORTED_MODULE_6__["ArticlePreviewComponent"],
                 componentProps: {
                     data: this.data[id]
                 },
@@ -415,7 +439,7 @@ let GuidePage = class GuidePage {
     legend() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const modal = yield this.modalCtrl.create({
-                component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_5__["LegendComponent"],
+                component: _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_7__["LegendComponent"],
                 // backdropDismiss:false,
                 swipeToClose: true,
                 cssClass: 'legend'
@@ -423,9 +447,102 @@ let GuidePage = class GuidePage {
             yield modal.present();
         });
     }
+    // QR-Code Functions
+    accessCamera() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                // cssClass: 'my-custom-class',
+                header: 'Kamera deaktiviert',
+                message: 'Wenn du einen QR-Code Scannen möchtest, erlaube bitte den Kamera zugriff in den Einstellungen.',
+                buttons: [
+                    {
+                        text: 'Abbrechen',
+                        role: 'cancel',
+                        cssClass: 'secondary'
+                    }, {
+                        text: 'Einstellungen',
+                        handler: () => {
+                            this.qrScanner.openSettings();
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    undefinedQrCode() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                // cssClass: 'my-custom-class',
+                header: 'Fehler',
+                message: 'Der QR-Code ist entweder nicht leserlich oder gehört nicht zur Tour.',
+                buttons: ['Okay']
+            });
+            yield alert.present();
+        });
+    }
+    startScanning() {
+        // Optionally request the permission early
+        this.qrScanner.prepare().
+            then((status) => {
+            if (status.authorized) {
+                this.qrScanner.show();
+                // Use Class to Toggle Backgound Visibility
+                this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                // debugger
+                this.scanSub = this.qrScanner.scan()
+                    .subscribe((textFound) => {
+                    console.log(textFound);
+                    // Use Class to Toggle Backgound Visibility
+                    this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                    // Route to Page with textFound var
+                    // Array contains all possible routings
+                    // var routs = [];
+                    // this.route.config.forEach(elements => {
+                    //   routs.push(elements.path)
+                    // });
+                    // Check if QR-Code is valid
+                    if (this.data.map(x => x.name).includes(textFound)) {
+                        this.route.navigate(['/article/' + textFound]);
+                        console.log(textFound);
+                        this.qrScanner.destroy();
+                    }
+                    else {
+                        this.undefinedQrCode();
+                        this.qrScanner.destroy();
+                    }
+                }, (err) => {
+                    alert(JSON.stringify(err));
+                });
+            }
+            else if (status.denied) {
+                // The video preview will remain black, and scanning is disabled. We can
+                // try to ask the user to change their mind, but we'll have to send them
+                // to their device settings with `QRScanner.openSettings()`.
+            }
+            else {
+                // we didn't get permission, but we didn't get permanently denied. (On
+                // Android, a denial isn't permanent unless the user checks the "Don't
+                // ask again" box.) We can ask again at the next relevant opportunity.
+            }
+        })
+            .catch((e) => {
+            console.log('Error is', e);
+            this.accessCamera();
+        });
+    }
+    stopScanning() {
+        // Use Class to Toggle Backgound Visibility
+        this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+        this.qrScanner.destroy();
+    }
 };
 GuidePage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
+    { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["QRScanner"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 GuidePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

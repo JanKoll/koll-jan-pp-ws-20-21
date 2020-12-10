@@ -438,6 +438,12 @@
       var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! ./app-routing.module */
       "./src/app/app-routing.module.ts");
+      /* harmony import */
+
+
+      var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      /*! @ionic-native/qr-scanner/ngx */
+      "./node_modules/@ionic-native/qr-scanner/__ivy_ngcc__/ngx/index.js");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -450,7 +456,7 @@
         providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
           provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
           useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-        }],
+        }, _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_9__["QRScanner"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
       })], AppModule);
       /***/
