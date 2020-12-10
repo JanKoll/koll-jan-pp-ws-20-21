@@ -155,12 +155,25 @@ ion-split-pane {
 .map-wrapper {
   position: relative;
   .coord {
+    height: 1rem;
+    width: 1rem;
     position: absolute;
-    height: 3rem;
-    width: 3rem;
+    transform: translateX(-50%) translateY(-50%);
     background: red;
     border-radius: 100%;
+  }
+
+
+  .location {
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
     transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 50%;
+    transition: all 0.5s ease;
+    background: blue;
+    border-radius: 100%;
   }
 }
 
