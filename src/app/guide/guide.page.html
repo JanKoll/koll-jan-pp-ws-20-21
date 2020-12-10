@@ -4,16 +4,29 @@
       <ion-back-button defaultHref="home" color="light"></ion-back-button>
     </ion-buttons>
 
+    <ion-title>
+      Digitaler Guide
+    </ion-title>
+
     <ion-buttons slot="end">
       <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="solid-primary">
+  <div class="map-wrapper">
+    <div class="coord"
+      style="{{ setObjectLocation(item.coords) }}"
+      *ngFor="let item of data; let i = index"
+      (click)="showModal(i)"
+    ></div>
 
-  <!-- {{ data }} -->
+    <div class="location" style="right: {{wp}}%; top: {{hp}}%"></div>
 
-  <img src="../assets/map.jpg" />
+    <img src="../assets/map.png" />
 
+  </div>
+
+  <div class="info" (click)="legend()">i</div>
 </ion-content>

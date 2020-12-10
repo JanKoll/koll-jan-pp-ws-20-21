@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
         <ion-back-button defaultHref="guide" color="light"></ion-back-button>
@@ -16,8 +16,10 @@
 
 <ion-content>
 
-  <ion-text color="light" *ngIf="result">
-    <p>{{ result.intro }}</p>
-  </ion-text>
+  <div class="ion-padding">
+    <ion-text color="light" *ngIf="result">
+      <p>{{ result.intro }}</p>
+    </ion-text>
+  </div>
 
 </ion-content>

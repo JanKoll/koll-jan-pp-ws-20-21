@@ -28,44 +28,94 @@
 @import "theme/fonts.scss";
 
 // Colors
-$primary: #006a69;
-$secondary: #64b451;
+$primary: #006C66;
+$secondary: #64B451;
 $tertiary: #a7d19c;
 $success: #2dd36f;
 $warning: #ffc409;
 $danger: #eb445a;
-$dark: #1a171b;
+$dark: #000000;
 $medium: #a8a8a7;
-$light: #eeeded;
+$light: #EEEEEE;
+
+* {
+  &:focus {
+    outline: none;
+  }
+}
 
 :root {
   --ion-font-family:  'Roboto'!important;
   font-family:  'Roboto' !important;
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  ion-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+// Hide Scroolbars
+
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  background: linear-gradient(to bottom, $secondary 5%, $primary 60%) !important;
+  // background: $primary;
+
+
+  //
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   height: 100%;
+  //   max-height: 800px;
+  //   background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  // }
 }
 
 app-home {
-  background-color: $primary;
+  background-color: transparent;
 }
 
 ion-content {
+  background: linear-gradient(to bottom, $secondary 5%, $primary 60%) !important;
   --ion-background-color: transparent;
-  --color: #eeeded;
+  --color: #EEEEEE;
 
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100%;
-    max-height: 800px;
-    background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   height: 100%;
+  //   max-height: 800px;
+  //   background: linear-gradient(to bottom, $secondary 5%, $primary 60%);
+  // }
+
+  &.solid-primary {
+    --ion-background-color: #006C66;
   }
 }
 
 ion-toolbar {
-  --background: #64b451;
-  --color: #eeeded;
+  --background: transparent;
+  --color: #EEEEEE;
   --min-height: 4rem;
 
   ion-title {
@@ -76,38 +126,69 @@ ion-toolbar {
 }
 
 ion-card {
-  --color: #eeeded;
-  --background: #64b451;
-  border: .375rem solid $light;
+  --color: #EEEEEE;
+  --background: #64B451;
+  border: .25rem solid $light;
   border-radius: 1rem;
 
+  ion-card-header {
+    padding: 2rem .25rem 1rem .25rem !important;
   ion-card-title {
-    --ion-font-family:  'Merriweather'!important;
-    font-family:  'Merriweather' !important;
+    font-weight: bold;
+    }
+  }
+
+  ion-card-content {
+    font-size: 1.125rem !important;
+    padding: 0rem .25rem 2rem .25rem !important;
   }
 }
 
 ion-split-pane {
   ion-list {
     margin-bottom: 1rem;
-    
+
     ion-list-header {
-      --color: #eeeded;
-      font-weight: bold;
-      margin-bottom: .5rem;
-      // --background: rgba(#eeeded, .5);
-      &:before {
-        content: "";
-        top: 35%;
-        bottom: -5%;
-        left: 0;
-        width: 5px;
-        background: $secondary;
-        position: absolute;
+      --color: #006C66;
+      --background: #a7d19c;
+
+      min-height: unset;
+      font-weight: 700;
+      padding: .25rem 0 .25rem 1rem;
+
+      font-size: 1.25rem;
+
+      &:hover {
+        cursor: pointer;
       }
+
+
+      // margin-bottom: .5rem;
+      // --background: rgba(#EEEEEE, .5);
+      // &:before {
+      //   content: "";
+      //   top: 35%;
+      //   bottom: -5%;
+      //   left: 0;
+      //   width: 5px;
+      //   background: $secondary;
+      //   position: absolute;
+      // }
     }
     ion-item {
-      --color: #eeeded;
+      ion-label {
+        --color: #EEEEEE !important;
+
+        font-size: 1.25rem;
+        padding-left: .5rem;
+      }
+
+      &.ion-activated {
+        ion-label {
+          --color: #a7d19c !important;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
@@ -116,10 +197,239 @@ ion-split-pane {
   padding: 0 2.5rem;
 }
 
+.map-wrapper {
+  position: relative;
+  .coord {
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    background: red;
+    border-radius: 100%;
+  }
+
+
+  .location {
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 50%;
+    transition: all 0.5s ease;
+    background: blue;
+    border-radius: 100%;
+  }
+}
+
+ion-modal {
+  --background: unset;
+
+  .modal-wrapper {
+    --background: transparent;
+  }
+
+  .modal-shadow {
+    display: none;
+  }
+
+  app-article-preview {
+    &.ion-page {
+      // overflow: scroll;
+    }
+  }
+
+  .text {
+    position: relative;
+    .close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      background: none;
+      color: $dark;
+      cursor: pointer;
+    }
+  }
+
+  &.legend {
+    padding: 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+
+
+    .modal-wrapper {
+      background: $light;
+      color: $primary;
+      padding: 1.5rem 1rem;
+
+      height: unset;
+      position: relative;
+      display: block;
+
+      app-legend {
+        height: unset;
+        position: relative;
+      }
 
 
 
+      .content {
+        display: block;
 
+        p {
+          margin-top: 0;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+      }
+    }
+
+  }
+
+  &.articleprev {
+    padding:  5rem 1.5rem 1.5rem 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+    display: flex;
+
+    .modal-wrapper {
+      color: $primary;
+      align-items: flex-end;
+      align-content: flex-end;
+      display: flex;
+
+      height: unset;
+      max-height: 100%;
+      position: relative;
+      display: block;
+      overflow: auto;
+      --overflow: auto;
+
+      app-article-preview {
+        height: unset;
+        position: relative;
+      }
+    }
+
+    .content {
+      height: 100%;
+
+      .head {
+        position: relative;
+        min-height: 4.5rem;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 1rem;
+        .icon {
+          height: 4rem;
+          width: 4rem;
+          overflow: hidden;
+          border-radius: 100%;
+          border: solid .25rem $light;
+          background: $primary;
+          position: absolute;
+          bottom: 0;
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+
+        h2 {
+          font-weight: 700;
+          font-size: 2rem;
+          padding-left: 4.5rem;
+          margin-bottom: 0;
+          color: $light;
+        }
+      }
+
+      .text {
+        background: $light;
+        padding: 1rem;
+        p {
+          margin-top: 0;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }
+
+      .routerbtn {
+        color: $primary;
+        background: $light;
+        padding-top: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        ion-button {
+          --color: #006C66;
+          --background: #EEEEEE;
+          --background-hover: #006C66;
+          --color-hover: #EEEEEE;
+
+          --border-radius: unset;
+          --border-color: #006C66;
+          --border-width: .25rem;
+          --border-style: solid;
+
+          --padding-top: .5rem;
+          --padding-end: .75rem;
+          --padding-bottom: .5rem;
+          --padding-start: .75rem;
+
+          height: unset;
+          position: relative;
+          margin-right: 2.5rem;
+
+          font-size: 1.125rem;
+          font-weight: 700;
+          letter-spacing: .5px;
+
+
+          &:after {
+            content: ">";
+            text-align: center;
+            height: 2.625rem;
+            width: 2.625rem;
+            line-height: 2.625rem;
+            background: $primary;
+            color: $light;
+            position: absolute;
+            top: 0;
+            right: -2.5rem;
+            // border: .25rem solid $primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+div.info {
+  position: fixed;
+  bottom: .75rem;
+  right: .75rem;
+  background: $primary;
+  border: .25rem solid $light;
+  color: $light;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  line-height: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  box-sizing: border-box;
+  box-shadow: 0 .5rem .5rem rgba($dark, .15);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 
 
