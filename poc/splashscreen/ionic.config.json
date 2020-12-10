@@ -1,0 +1,7 @@
+{
+  "name": "splashscreen",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

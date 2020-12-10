@@ -138,7 +138,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"head\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/img/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n</div>\n";
+      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"icon-header\">\n      <div class=\"icon\">\n        <img src=\"../assets/icon/{{ data.icon }}\" alt=\"{{ data.name }} Icon\">\n      </div>\n\n      <h2>{{ data.name }}</h2>\n    </div>\n\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n      <p>{{ data.intro }}</p>\n\n      <ion-img src=\"../assets/data/media/{{ data.name }}/{{ data.previmg }}\" alt=\"{{ data.name }} Vorschaubild\"></ion-img>\n\n      <div class=\"routerbtn\">\n        <ion-button (click)=\"route(data.name)\">\n          Mehr erfahren\n        </ion-button>\n      </div>\n    </div>\n</div>\n";
       /***/
     },
 
@@ -158,7 +158,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n\n      <p><b>Legende:</b></p>\n      <ul>\n        <li>Aktueller Standort</li>\n        <li>Station</li>\n        <li>Parkplatz</li>\n        <li>QR-Code Scanner</li>\n      </ul>\n    </div>\n</div>\n";
+      __webpack_exports__["default"] = "<div class=\"content\">\n    <div class=\"text\">\n      <div class=\"close\" (click)=\"close()\">X</div>\n\n      <p><b>Legende:</b></p>\n\n      <div class=\"leg\">\n        <div class=\"location\"></div>\n        <p>Aktueller Standort</p>\n      </div>\n\n      <div class=\"leg\">\n        <div class=\"coord\">!</div>\n        <p>Station</p>\n      </div>\n\n      <div class=\"leg\">\n        <div class=\"coord park\">P</div>\n        <p>Parkplatz</p>\n      </div>\n\n      <div class=\"leg\">\n        <div class=\"coord qr\">Q</div>\n        <p>QR-Code Scanner</p>\n      </div>\n    </div>\n</div>\n";
       /***/
     },
 
@@ -178,7 +178,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar class=\"solid-primary\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\" [fullscreen]=\"true\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    ></div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <div class=\"info\" (click)=\"legend()\">i</div>\n  <div id=\"qropen\" class=\"info\" (click)=\"startScanning()\">Q</div>\n\n</ion-content>\n\n<div id=\"qrclose\" (click)=\"stopScanning()\">X</div>\n";
+      __webpack_exports__["default"] = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar class=\"solid-primary\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" color=\"light\"></ion-back-button>\n    </ion-buttons>\n\n    <ion-title>\n      Digitaler Guide\n    </ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-menu-button color=\"light\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"solid-primary\" [fullscreen]=\"true\">\n  <div class=\"map-wrapper\">\n    <div class=\"coord\"\n      style=\"{{ setObjectLocation(item.coords) }}\"\n      *ngFor=\"let item of data; let i = index\"\n      (click)=\"showModal(i)\"\n    >!</div>\n\n    <div class=\"location\" style=\"right: {{wp}}%; top: {{hp}}%\"></div>\n\n    <img src=\"../assets/map.png\" />\n\n  </div>\n\n  <div class=\"info\" (click)=\"legend()\">i</div>\n  <div id=\"qropen\" class=\"info\" (click)=\"startScanning()\">Q</div>\n\n</ion-content>\n\n<div id=\"qrclose\" (click)=\"stopScanning()\">X</div>\n";
       /***/
     },
 
@@ -657,10 +657,10 @@
           this.qrScanner = qrScanner;
           this.route = route; // Call and Update geo Location
 
-          this.getCurrentLocation();
-          setInterval(function () {
-            return _this.getCurrentLocation();
-          }, 5000); // subscribe to cammera close
+          this.getCurrentLocation(); // setInterval(() =>
+          //   this.getCurrentLocation()
+          // , 5000);
+          // subscribe to cammera close
 
           this.platform.backButton.subscribeWithPriority(0, function () {
             // Android Physical Back Button???
@@ -681,8 +681,9 @@
             fetch('./assets/data/guide.json').then(function (res) {
               return res.json();
             }).then(function (json) {
-              _this2.data = json; // console.log(this.data.map(x => x.name));
+              _this2.data = json;
             });
+            this.getCurrentLocation();
           } // Call and set current geo location
 
         }, {

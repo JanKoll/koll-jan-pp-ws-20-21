@@ -16,10 +16,87 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="ion-padding">
-    <ion-text color="light" *ngIf="result">
+  <div class="article" *ngIf="result">
+
+
+    <!-- intro section -->
+
+    <div class="icon-header">
+      <div class="icon">
+        <img src="../assets/icon/{{ result.icon }}" alt="{{ result.name }} Icon">
+      </div>
+
+      <p>Mehr erleben im</p>
+      <h2>{{ result.name }}</h2>
+    </div>
+
+    <ion-text color="light">
       <p>{{ result.intro }}</p>
     </ion-text>
-  </div>
 
+
+    <!-- content section -->
+
+    <div *ngFor="let item of result.body; index as i;">
+
+      <div [ngSwitch]="item.type" class="section-wrap">
+
+        <!-- Text -->
+        <div *ngSwitchCase="'text'">
+          <h4>{{ item.hedding }}</h4>
+          <p>{{ item.content }}</p>
+        </div>
+
+        <!-- img -->
+        <div *ngSwitchCase="'img'">
+          <h4>{{ item.hedding }}</h4>
+          <ion-img src="../assets/data/media/{{ result.name }}/{{ item.content }}" alt="{{ result.name }} Artikel Bild"></ion-img>
+        </div>
+
+        <!-- slider -->
+        <div *ngSwitchCase="'img-slider'">
+          <h4>{{ item.hedding }}</h4>
+         <!-- <p>{{ item.content }}</p> -->
+
+         <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let img of item.content">
+              <ion-img src="../assets/data/media/{{ result.name }}/{{ img }}" alt="{{ result.name }} Artikel Bild"></ion-img>
+            </ion-slide>
+          </ion-slides>
+        </div>
+
+        <!-- video -->
+        <div *ngSwitchCase="'video'">
+          <h4>{{ item.hedding }}</h4>
+          <iframe [src]="updateVideoUrl(item.content)" allowfullscreen>Ups, da ist etwas schief gelaufen!</iframe>
+        </div>
+
+        <!-- audio -->
+        <div *ngSwitchCase="'audio'">
+          <h4>{{ item.hedding }}</h4>
+
+          <audio controls>
+            <source src="../assets/data/media/{{ result.name }}/{{ item.content }}" type="audio/mpeg">
+            Ups, da ist etwas schief gelaufen!
+          </audio>
+        </div>
+
+        <!-- default -->
+        <div *ngSwitchDefault>
+          <p>Error!</p>
+          <h4>{{ item.hedding }}</h4>
+          <p>{{ item.content }}</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div [ngSwitch]="switch_expression">
+       <some-element *ngSwitchCase="match_expression_1">...</some-element>
+
+       <some-element *ngSwitchDefault>...</some-element>
+    </div> -->
+
+
+  </div>
 </ion-content>
