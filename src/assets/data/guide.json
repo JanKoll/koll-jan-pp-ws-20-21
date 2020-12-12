@@ -3,14 +3,14 @@
     "name": "Hauptgebäude",
     "icon": "hauptgebaude.png",
     "previmg": "hennhouse.png",
-    "coords": {"x":47.767885,"y":8.996252},
+    "coords": {"x":47.768057,"y":8.9966322},
     "intro": "Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
   },
   {
     "name": "Hennhouse",
     "icon": "hennhouse.png",
     "previmg": "hennhouse.png",
-    "coords": {"x":47.765598,"y":8.998595},
+    "coords": {"x":47.765940,"y":8.998495},
     "intro": "Ein ehemaliger Hühnerstall wurde zum Multimediahaus. Groß und Klein können unsere aktuellen Forschungsprojekte in spannenden Filmen und Shows erleben.",
     "body": [
       {
@@ -44,7 +44,7 @@
     "name": "BeeMarie",
     "icon": "beemarie.png",
     "previmg": "hennhouse.png",
-    "coords": {"x":47.765548,"y":8.997899},
+    "coords": {"x":47.765458,"y":8.998200},
     "intro": "Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
   }
 ]

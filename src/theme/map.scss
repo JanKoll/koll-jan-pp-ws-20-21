@@ -7,13 +7,10 @@
   width: 2rem;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  background: $primary;
-  border: .25rem solid $light;
-  box-shadow: 0 .5rem .5rem rgba($dark, .15);
-  border-radius: 100%;
-  text-align: center;
-  line-height: 1.5rem;
-  font-weight: 700;
+  svg {
+    -webkit-filter: drop-shadow( 0 .5rem .5rem rgba($dark, .15));
+    filter: drop-shadow( 0 .5rem .5rem rgba($dark, .15));
+  }
 
   &.park {
     background: $dark;
@@ -54,4 +51,32 @@ div.info {
   &:hover {
     cursor: pointer;
   }
+}
+
+.hexagon {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: #64C7CC;
+  margin: 86.60px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #64C7CC;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #64C7CC;
 }
