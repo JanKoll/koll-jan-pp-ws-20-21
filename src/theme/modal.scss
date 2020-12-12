@@ -82,6 +82,27 @@ ion-modal {
         line-height: 1rem;
         color: $light;
         box-shadow: 0 .125rem .125rem rgba($dark, .15);
+        border-radius: 100%;
+
+        &.station {
+          box-shadow: unset;
+          svg {
+            -webkit-filter: drop-shadow( 0 .125rem .125rem rgba($dark, .15));
+            filter: drop-shadow( 0 .125rem .125rem rgba($dark, .15));
+          }
+        }
+
+        &.park {
+          background: $dark;
+          font-size: .75rem;
+          text-align: center;
+          line-height: 1.5rem;
+        }
+
+        &.qr {
+          background: $light;
+          padding: .25rem;
+        }
       }
 
       p {

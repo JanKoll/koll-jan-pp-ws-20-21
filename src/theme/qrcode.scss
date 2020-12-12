@@ -4,6 +4,8 @@ body {
 
   #qropen {
     bottom: 4.25rem;
+    background: $light;
+    padding: .25rem;
   }
 
   &.qractive {
