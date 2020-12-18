@@ -369,7 +369,7 @@ let GuidePage = class GuidePage {
             // Android Physical Back Button???
             // document.getElementsByTagName('body')[0].style.opacity = '1';
             // Use Class to Toggle Backgound Visibility
-            this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+            document.getElementsByTagName('body')[0].classList.toggle("qractive");
             this.qrScanner.destroy();
         });
     }
@@ -490,13 +490,14 @@ let GuidePage = class GuidePage {
             if (status.authorized) {
                 this.qrScanner.show();
                 // Use Class to Toggle Backgound Visibility
-                this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                console.log("AUTHORIZED ");
                 // debugger
-                this.scanSub = this.qrScanner.scan()
+                let scanSub = this.qrScanner.scan()
                     .subscribe((textFound) => {
                     console.log(textFound);
                     // Use Class to Toggle Backgound Visibility
-                    this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                    document.getElementsByTagName('body')[0].classList.toggle("qractive");
                     // Route to Page with textFound var
                     // Array contains all possible routings
                     // var routs = [];
@@ -521,11 +522,13 @@ let GuidePage = class GuidePage {
                 // The video preview will remain black, and scanning is disabled. We can
                 // try to ask the user to change their mind, but we'll have to send them
                 // to their device settings with `QRScanner.openSettings()`.
+                console.log("ELSE IF");
             }
             else {
                 // we didn't get permission, but we didn't get permanently denied. (On
                 // Android, a denial isn't permanent unless the user checks the "Don't
                 // ask again" box.) We can ask again at the next relevant opportunity.
+                console.log("ELSE ");
             }
         })
             .catch((e) => {
@@ -535,7 +538,7 @@ let GuidePage = class GuidePage {
     }
     stopScanning() {
         // Use Class to Toggle Backgound Visibility
-        this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+        document.getElementsByTagName('body')[0].classList.toggle("qractive");
         this.qrScanner.destroy();
     }
 };

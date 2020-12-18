@@ -666,7 +666,7 @@
             // Android Physical Back Button???
             // document.getElementsByTagName('body')[0].style.opacity = '1';
             // Use Class to Toggle Backgound Visibility
-            _this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+            document.getElementsByTagName('body')[0].classList.toggle("qractive");
 
             _this.qrScanner.destroy();
           });
@@ -894,12 +894,13 @@
                 _this4.qrScanner.show(); // Use Class to Toggle Backgound Visibility
 
 
-                _this4.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive"); // debugger
+                document.getElementsByTagName('body')[0].classList.toggle("qractive");
+                console.log("AUTHORIZED "); // debugger
 
-                _this4.scanSub = _this4.qrScanner.scan().subscribe(function (textFound) {
+                var scanSub = _this4.qrScanner.scan().subscribe(function (textFound) {
                   console.log(textFound); // Use Class to Toggle Backgound Visibility
 
-                  _this4.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive"); // Route to Page with textFound var
+                  document.getElementsByTagName('body')[0].classList.toggle("qractive"); // Route to Page with textFound var
                   // Array contains all possible routings
                   // var routs = [];
                   // this.route.config.forEach(elements => {
@@ -923,13 +924,17 @@
                 }, function (err) {
                   alert(JSON.stringify(err));
                 });
-              } else if (status.denied) {// The video preview will remain black, and scanning is disabled. We can
+              } else if (status.denied) {
+                // The video preview will remain black, and scanning is disabled. We can
                 // try to ask the user to change their mind, but we'll have to send them
                 // to their device settings with `QRScanner.openSettings()`.
-              } else {// we didn't get permission, but we didn't get permanently denied. (On
-                  // Android, a denial isn't permanent unless the user checks the "Don't
-                  // ask again" box.) We can ask again at the next relevant opportunity.
-                }
+                console.log("ELSE IF");
+              } else {
+                // we didn't get permission, but we didn't get permanently denied. (On
+                // Android, a denial isn't permanent unless the user checks the "Don't
+                // ask again" box.) We can ask again at the next relevant opportunity.
+                console.log("ELSE ");
+              }
             })["catch"](function (e) {
               console.log('Error is', e);
 
@@ -940,7 +945,7 @@
           key: "stopScanning",
           value: function stopScanning() {
             // Use Class to Toggle Backgound Visibility
-            this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+            document.getElementsByTagName('body')[0].classList.toggle("qractive");
             this.qrScanner.destroy();
           }
         }]);
