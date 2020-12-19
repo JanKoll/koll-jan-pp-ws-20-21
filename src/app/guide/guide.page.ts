@@ -21,8 +21,8 @@ export class GuidePage implements OnInit {
   wp: number;
 
   //QR-Code Data
-  scanSub: any;
-  qrText: string;
+  // scanSub: any;
+  // qrText: string;
 
   // General Data
   data: any;
@@ -47,7 +47,7 @@ export class GuidePage implements OnInit {
       // Android Physical Back Button???
       // document.getElementsByTagName('body')[0].style.opacity = '1';
       // Use Class to Toggle Backgound Visibility
-      this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+      document.getElementsByTagName('body')[0].classList.toggle("qractive");
 
       this.qrScanner.destroy();
 
@@ -179,16 +179,17 @@ export class GuidePage implements OnInit {
         if (status.authorized) {
           this.qrScanner.show();
           // Use Class to Toggle Backgound Visibility
-          this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+          document.getElementsByTagName('body')[0].classList.toggle("qractive");
+          console.log("AUTHORIZED ");
 
           // debugger
-          this.scanSub = this.qrScanner.scan()
+          let scanSub = this.qrScanner.scan()
             .subscribe((textFound: string) => {
 
               console.log(textFound);
 
               // Use Class to Toggle Backgound Visibility
-              this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+              document.getElementsByTagName('body')[0].classList.toggle("qractive");
 
               // Route to Page with textFound var
 
@@ -216,10 +217,14 @@ export class GuidePage implements OnInit {
           // The video preview will remain black, and scanning is disabled. We can
           // try to ask the user to change their mind, but we'll have to send them
           // to their device settings with `QRScanner.openSettings()`.
+          console.log("ELSE IF");
+
         } else {
           // we didn't get permission, but we didn't get permanently denied. (On
           // Android, a denial isn't permanent unless the user checks the "Don't
           // ask again" box.) We can ask again at the next relevant opportunity.
+          console.log("ELSE ");
+
         }
       })
       .catch((e: any) => {
@@ -230,7 +235,7 @@ export class GuidePage implements OnInit {
 
   stopScanning() {
     // Use Class to Toggle Backgound Visibility
-    this.scanSub = document.getElementsByTagName('body')[0].classList.toggle("qractive");
+    document.getElementsByTagName('body')[0].classList.toggle("qractive");
     this.qrScanner.destroy();
   }
 
