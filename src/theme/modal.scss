@@ -1,0 +1,240 @@
+.icon-header {
+  position: relative;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  .icon {
+    height: 4rem;
+    width: 4rem;
+    overflow: hidden;
+    border-radius: 100%;
+    border: solid .25rem $light;
+    background: $primary;
+    position: absolute;
+    bottom: 0;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  p {
+    position: absolute;
+    top: 1rem;
+    left: 4.6rem;
+    font-weight: 200;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    padding-left: 4.5rem;
+    margin-bottom: 0;
+    color: $light;
+  }
+}
+
+ion-modal {
+  --background: unset;
+
+  .modal-wrapper {
+    --background: transparent;
+  }
+
+  .modal-shadow {
+    display: none;
+  }
+
+  app-article-preview {
+    &.ion-page {
+      // overflow: scroll;
+    }
+  }
+
+  .text {
+    position: relative;
+    .close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      background: none;
+      color: $dark;
+      cursor: pointer;
+    }
+  }
+
+  &.legend {
+    padding: 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+
+    .leg {
+      position: relative;
+      div {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: .75rem;
+        line-height: 1rem;
+        color: $light;
+        box-shadow: 0 .125rem .125rem rgba($dark, .15);
+        border-radius: 100%;
+
+        &.station {
+          box-shadow: unset;
+          svg {
+            -webkit-filter: drop-shadow( 0 .125rem .125rem rgba($dark, .15));
+            filter: drop-shadow( 0 .125rem .125rem rgba($dark, .15));
+          }
+        }
+
+        &.park {
+          background: $dark;
+          font-size: .75rem;
+          text-align: center;
+          line-height: 1.5rem;
+        }
+
+        &.qr {
+          background: $light;
+          padding: .25rem;
+        }
+      }
+
+      p {
+        padding-left: 2rem;
+      }
+    }
+
+
+    .modal-wrapper {
+      background: $light;
+      color: $primary;
+      padding: 1.5rem 1rem;
+
+      height: 15rem;
+      position: relative;
+      display: block;
+
+      app-legend {
+        height: 100%;
+        position: relative;
+      }
+
+
+
+      .content {
+        display: block;
+
+        p {
+          margin-top: 0;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+      }
+    }
+
+  }
+
+  &.articleprev {
+    padding:  5rem 1.5rem 1.5rem 1.5rem;
+    align-items: flex-end;
+    align-content: flex-end;
+    display: flex;
+
+    .modal-wrapper {
+      color: $primary;
+      align-items: flex-end;
+      align-content: flex-end;
+      display: flex;
+
+      height: 100%;
+      position: relative;
+      display: block;
+      overflow: auto;
+      --overflow: auto;
+
+      app-article-preview {
+        height: 100%;
+        position: relative;
+        overflow: scroll;
+      }
+    }
+
+    .content {
+      // height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-grow: 1;
+
+      .text {
+        background: $light;
+        padding: 1rem;
+        flex-grow: 1;
+        p {
+          margin-top: 0;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }
+
+      .routerbtn {
+        color: $primary;
+        background: $light;
+        padding-top: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        ion-button {
+          --color: #006C66;
+          --background: #EEEEEE;
+          --background-hover: #006C66;
+          --color-hover: #EEEEEE;
+
+          --border-radius: unset;
+          --border-color: #006C66;
+          --border-width: .25rem;
+          --border-style: solid;
+
+          --padding-top: .5rem;
+          --padding-end: .75rem;
+          --padding-bottom: .5rem;
+          --padding-start: .75rem;
+
+          height: unset;
+          position: relative;
+          margin-right: 2.5rem;
+
+          font-size: 1.125rem;
+          font-weight: 700;
+          letter-spacing: .5px;
+
+
+          &:after {
+            content: ">";
+            text-align: center;
+            height: 2.625rem;
+            width: 2.625rem;
+            line-height: 2.625rem;
+            background: $primary;
+            color: $light;
+            position: absolute;
+            top: 0;
+            right: -2.5rem;
+            // border: .25rem solid $primary;
+          }
+        }
+      }
+    }
+  }
+}

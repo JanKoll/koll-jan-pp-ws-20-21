@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-split-pane contentId="guide-content">
+    <ion-menu contentId="guide-content" type="overlay" side="end">
+      <ion-content color="primary">
+
+        <ion-header class="ion-no-border">
+          <ion-toolbar color="none">
+            <ion-buttons slot="start">
+              <ion-menu-button color="light"></ion-menu-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false">
+            <ion-list-header [routerLink]="['/guide/']">Digitaler Guide</ion-list-header>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of data; let i = index">
+            <ion-item routerDirection="forward" [routerLink]="['/article/', item.name]" lines="none" detail="false">
+              <ion-label>{{ item.name }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="guide-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

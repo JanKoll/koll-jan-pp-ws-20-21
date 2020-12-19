@@ -1,0 +1,29 @@
+ion-slides {
+  margin: 0 -1.5rem !important;
+  ion-slide {
+    width: 100% !important;
+    object-fit: cover;
+    overflow: hidden;
+    ion-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .swiper-pagination.swiper-pagination-bullets {
+    background: $light;
+    width: unset;
+    left: 50%;
+    border-radius: 1rem;
+    transform: translateX(-50%);
+    padding: 0 0.125rem 0.125rem 0.125rem;
+
+    .swiper-pagination-bullet {
+      --bullet-background: #A8A8A8;
+      opacity: 1;
+      &.swiper-pagination-bullet-active {
+        --bullet-background: #006C66;
+      }
+    }
+  }
+}

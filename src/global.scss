@@ -1,0 +1,179 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "theme/fonts.scss";
+
+// Colors
+$primary: #006C66;
+$secondary: #64B451;
+$tertiary: #a7d19c;
+$success: #2dd36f;
+$warning: #ffc409;
+$danger: #eb445a;
+$dark: #000000;
+$medium: #a8a8a7;
+$light: #EEEEEE;
+
+// QR-Code Styles
+@import "./theme/qrcode.scss";
+@import "./theme/card.scss";
+@import "./theme/nav.scss";
+@import "./theme/map.scss";
+@import "./theme/modal.scss";
+@import "./theme/article.scss";
+@import "./theme/slider.scss";
+@import "./theme/video.scss";
+
+
+* {
+  &:focus {
+    outline: none;
+  }
+}
+
+:root {
+  --ion-font-family:  'Roboto'!important;
+  font-family:  'Roboto' !important;
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    &:not(:first-child) {
+      margin-block-start: 0;
+    }
+  }
+
+  h4 {
+    font-weight: bold;
+    // margin-bottom: .25rem;
+  }
+
+  ion-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+// Hide Scroolbars
+// ion-content {
+//   // overwrite inline styles
+//   --offset-bottom: auto!important;
+//   --overflow: hidden;
+//   overflow: auto;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+
+
+app-home {
+  background-color: transparent;
+}
+
+ion-content {
+  background: linear-gradient(to bottom, $secondary 5%, $primary 60%) !important;
+  --ion-background-color: transparent;
+  --color: #EEEEEE;
+}
+
+ion-toolbar {
+  --background: #64B451;
+  --color: #EEEEEE;
+  --min-height: 4rem;
+
+  ion-title {
+    svg {
+      height: 1.25rem;
+    }
+  }
+}
+
+.solid-primary {
+  --background: #006C66;
+  --ion-background-color: #006C66;
+}
+
+.ion-padding-horizontal {
+  padding: 0 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test {}
